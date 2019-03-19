@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>Product More</title>
+</head>
+<body>
+
+	<a href="/cadastrarProduto">Cadastrar produto</a> <br/>
+	<a href="/cadastrarUsuario">Cadastrar usuários</a> </br>
+	<a href="/usuarios">Listar usuários</a> </br>
+	<a href="/produtos">Listar produtos</a> </br>
+	<a href="/logout">Sair</a> </br>
+	
+	
+	<th:block th:include="mensagemValidacao"></th:block>
+	
+	<form th:action="@{/cadastrarUsuario}" method="post">
+	
+	Nome Completo:<br/>
+	<input type="text" name="nome_completo"/><br/>
+	
+	Telefone:<br/>
+	<input type="text" name="telefone"/><br/>
+	
+	Login:<br/>
+	<input type="text" name="nome"/><br/>
+	
+	Senha:<br/>
+	<input type="password" name="senha"/><br/>
+	
+	<button type="submit">Cadastrar</button>
+	
+	</form>
+	
+</body>
+</html>

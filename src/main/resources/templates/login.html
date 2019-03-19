@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+</head>
+<body>
+
+	<form th:action="@{/appLogin}" method="POST">
+	   Login:<br/> 
+	   <input type="text" name="app_nomeusuario"></input><br/>
+	   
+	   Senha:<br/> 
+	   <input type="password" name="app_senha"></input><br/>
+	   
+	   <input type="submit" value="Entrar"/>
+	
+	</form>
+
+</body>
+</html>

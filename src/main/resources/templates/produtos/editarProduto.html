@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="utf-8">
+		<title>Product More</title>
+	</head>
+	<body>
+	
+			<th:block th:include="mensagemValidacao"></th:block>
+	<br/>
+	
+     	<form method="post"
+			th:action="@{/update/{codigo}(codigo=${produto.codigo})}"
+			th:object="${produto}">
+       Id do produto<br/>
+       <input type="text" id="produtoId"  th:field="*{produtoId}"/><br/>
+       Nome<br/>
+       <input type="text" th:field="*{nome}" id="nome"/><br/>
+       Valor<br/>
+       <input type="text" id="valor" th:field="*{valor}"/><br/>
+     
+       	<button type="submit">Atualizar</button>
+     </form>
+	
+	</body>
+</html>

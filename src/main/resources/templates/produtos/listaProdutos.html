@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Product Mode</title>
+</head>
+<body>
+
+<a href="/cadastrarProduto">Cadastrar produto</a> <br/>
+<a href="/cadastrarUsuario">Cadastrar usuários</a> </br>
+<a href="/usuarios">Listar usuários</a> </br>
+<a href="/produtos">Listar produtos</a> </br>
+<a href="/logout">Sair</a> </br>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Opções</th>
+			</tr>
+		
+		</thead>
+		<tbody>
+		    <tr th:each="produto : ${produtos}">
+		    
+		    	<td><span th:text="${{produto.produtoId}}"></span></td>
+		    	<td><span th:text="${{produto.nome}}"></span></td>
+		    	<td><span th:text="${{produto.valor}}"></span></td>
+		    	<td>
+		    	    <a th:href="@{/edit/{codigo}(codigo=${produto.codigo})}">Editar</a>
+		    		<a th:href="${(#mvc.url('PC#deletarProduto').arg(0, produto.codigo)).build()}">Deletar</a>
+		    	</td>
+		    </tr>
+		
+		
+		</tbody>
+	
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>Product More</title>
+</head>
+<body>
+
+		   <a href="/cadastrarProduto">Cadastrar produto</a> <br/>
+			<a href="/cadastrarUsuario">Cadastrar usuários</a> </br>
+			<a href="/usuarios">Listar usuários</a> </br>
+			<a href="/produtos">Listar produtos</a> </br>
+			<a href="/logout">Sair</a> </br>
+
+	<table>
+	
+		<thead>
+		
+				<tr>
+					<th>Nome Completo</th>
+					<th>Login</th>
+					<th>Telefone</th>
+					<th>Opções</th>
+				<tr>
+		
+		</thead>
+		
+			<tbody>
+				<tr th:each="usuario : ${usuariosListar}">
+					
+					<td><span th:text="${usuario.nome_completo}"></span></td>
+					<td><span th:text="${usuario.nome}"></span></td>
+				    <td><span th:text="${usuario.telefone}"></span></td>
+					<td><a type="button" class="btn btn-danger"
+						th:href="@{/delete/{id}(id=${usuario.id})}">Deletar</a>
+					</td>
+				</tr>
+			</tbody>
+	
+	</table>
+
+</body>
+</html>
