@@ -13,16 +13,7 @@
 <a href="/produtos">Listar produtos</a> </br>
 <a href="/logout">Sair</a> </br>
 
-<br/>
-<br/>
 
-  <form action="pesquisarProduto" method="POST">
-	  	<label>Pesquisa por nome produto:</label>
-	  	<input name="nomePesquisa">
-	  	<input type="submit" value="Buscar">
-  </form>
-<br/>
-<br/>
 
 	<table>
 		<thead>
@@ -35,7 +26,7 @@
 		
 		</thead>
 		<tbody>
-		    <tr th:each="produto : ${produtos}">
+		    <tr th:each="produto : ${produtosOrdenado}">
 		    
 		    	<td><span th:text="${{produto.produtoId}}"></span></td>
 		    	<td><span th:text="${{produto.nome}}"></span></td>
@@ -45,10 +36,10 @@
 		    		<a th:href="${(#mvc.url('PC#deletarProduto').arg(0, produto.codigo)).build()}">Deletar</a>
 		    	</td>
 		    </tr>
-					<tr>
-      				<!-- percorre os dados, so exibe se não tiver produtos -->
-      					<td  th:if="${#lists.isEmpty(produtos)}">Nenhum produto foi encontrado</td>
-      				</tr>
+		    <tr>
+						<!-- percorre os dados, so exibe se não tiver produtos -->
+      					<td  th:if="${#lists.isEmpty(produtosOrdenado}">Nenhum produto foi encontrado</td>
+      		</tr>
 		
 		</tbody>
 	

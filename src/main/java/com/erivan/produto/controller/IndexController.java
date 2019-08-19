@@ -9,5 +9,11 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
+	
+	
+	@RequestMapping("/base")
+	public String base() {
+		return "base";
+	}
 
 }

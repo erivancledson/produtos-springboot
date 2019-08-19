@@ -65,7 +65,7 @@ public class UsuarioController {
 		@RequestMapping("/usuarios")
 		public ModelAndView listarUsuariosPage() {
 			
-		ModelAndView mv = new ModelAndView("/usuario/listarUsuarios");	
+		ModelAndView mv = new ModelAndView("usuario/listarUsuarios");	
 		Iterable<Usuario> usuarios = usuarioRepository.findAll();
 		mv.addObject("usuariosListar", usuarios);
 			return mv;

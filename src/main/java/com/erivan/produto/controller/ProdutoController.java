@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -52,6 +53,17 @@ public class ProdutoController {
 		return mv;
 	}
 	
+	
+	//lista pela ordem crescente
+	@RequestMapping("produtosOrdenados")
+	public ModelAndView listaProdutosOrdenados() {
+		//chama o html
+		ModelAndView mv = new ModelAndView("produtos/listaProdutosOrdenados");
+		Iterable<Produto> produtos = produtoRepository.ordenaPelaOrdemCrescente();
+		mv.addObject("produtosOrdenado", produtos);
+		return mv;
+	}
+	
 	//deletar
 	@RequestMapping("/deletarProduto")
 	public String deletarProduto(long codigo) {
@@ -82,6 +94,14 @@ public class ProdutoController {
 		model.addAttribute("produtos", produtoRepository.findAll());
 		return "redirect:/produtos";
 		
+	}
+	//Query do ProdutoRepository
+	@PostMapping("**/pesquisarProduto")
+	public ModelAndView pesquisarProduto(@RequestParam("nomePesquisa") String nomePesquisa) {
+		ModelAndView modelAndView = new ModelAndView("produtos/listaProdutos");
+		//chave "produtos"
+		modelAndView.addObject("produtos", produtoRepository.findProdutoByName(nomePesquisa));
+		return modelAndView;
 	}
 	
 }

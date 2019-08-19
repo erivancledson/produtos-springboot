@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.NumberFormat;
 
 
 @Entity
+@NamedQuery(name = "Produto.ordenaPelaOrdemCrescente",
+		query= "SELECT p FROM Produto p ORDER BY p.nome ASC")
+	
 public class Produto implements Serializable{
 	
 	
